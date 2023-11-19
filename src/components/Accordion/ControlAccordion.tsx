@@ -1,10 +1,17 @@
 import React from 'react';
 
+type ItemType = {
+    title: string
+    value: any
+}
+
+
 type AccordionPropsTitle = {
     setAccordionCollapsed: (collapsed: boolean) => void
     titleValue: string
     collapsed: boolean
-    countStrings: number
+    items: ItemType[]
+    onClick: (value: any) => void
 }
 
 type AccordionTitleType = {
@@ -14,14 +21,18 @@ type AccordionTitleType = {
 }
 
 type AccordionBodyType = {
-    listString: number
-}
+    items: ItemType[]
+    onClick: (value: any) => void
+ }
 
 export function ControlAccordion(props: AccordionPropsTitle) {
+
     return (
         <>
-            <AccordionTitle title={props.titleValue} setAccordionCollapsed={props.setAccordionCollapsed} collapsed={props.collapsed}/>
-            {!props.collapsed && <AccordionBody listString={props.countStrings}/>}
+            <AccordionTitle title={props.titleValue}
+                            setAccordionCollapsed={props.setAccordionCollapsed}
+                            collapsed={props.collapsed}/>
+            {!props.collapsed && <AccordionBody items={props.items} onClick={props.onClick}/>}
         </>
     )
 }
@@ -31,14 +42,10 @@ function AccordionTitle(props: AccordionTitleType) {
 }
 
 function AccordionBody(props: AccordionBodyType) {
-    const numberArray = []
-    for (let i = 0; i <= props.listString; i++) {
-        numberArray.push(i)
-    }
     return (
         <ul>
-            {numberArray.map(e => {
-                return <li key={e}>{e}</li>
+            {props.items.map((i, index) => {
+                return <li onClick={() => {props.onClick(i.value)}} key={index}>{i.title}</li>
             })}
         </ul>
     )
