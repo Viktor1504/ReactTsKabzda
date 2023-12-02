@@ -8,6 +8,7 @@ import {UncontrolledRating} from './components/UncontrolledRating/UncontrolledRa
 import ControlOnOff from './components/OnOff/ControlOnOff';
 import {action} from '@storybook/addon-actions';
 import {Select} from './components/Select/Select';
+import {SelectDim} from './components/SelectDim/SelectDim';
 
 function App() {
 
@@ -20,17 +21,16 @@ function App() {
     let [on, setOn] = useState<boolean>(false);
 
 
-    // const namesFriends = [
-    //     {title: 'Victor', value: '1'},
-    //     {title: 'Pavel', value: '2'},
-    //     {title: 'Elena', value: '3'},
-    //     {title: 'Vitaliy', value: '4'}
-    // ]
+    const namesFriends = [
+        {title: 'Victor', value: '1'},
+        {title: 'Pavel', value: '2'},
+        {title: 'Elena', value: '3'},
+        {title: 'Vitaliy', value: '4'}
+    ]
 
     return (  // возвращает JSX
         <div className={'App'}>
             {/*<Select items={namesFriends}/>*/}
-
             {/*<ControlAccordion titleValue={'Menu'}*/}
             {/*                  collapsed={accordionCollapsed}*/}
             {/*                  setAccordionCollapsed={setAccordionCollapsed}*/}
@@ -43,7 +43,7 @@ function App() {
             {/*/>*/}
 
             {/*<ControlOnOff on={on} setOn={setOn}/> {on.toString()}*/}
-            {/*<UncontrolledAccordion titleValue={'Menu'} countStrings={10}/>*/}
+            <UncontrolledAccordion titleValue={'Menu'} countStrings={10}/>
             {/*<UncontrolledRating/>*/}
 
             {/*<PageTitle title={'This is APP component'}/>*/}
