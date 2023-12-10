@@ -1,12 +1,7 @@
 import {useState} from 'react';
 
-type PropsType = {
-    //on: boolean
-}
-
-
-function OnOff(props: PropsType) {
-    console.log('onoff rendering')
+function OnOff() {
+    console.log('onOff rendering')
     let [on, setOn] = useState(false);
 
     const onStyle = {

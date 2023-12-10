@@ -15,3 +15,8 @@
     background-color: blue;
     color: white;
 }
+
+.container {
+    display: flex;
+    gap: 20px;
+}

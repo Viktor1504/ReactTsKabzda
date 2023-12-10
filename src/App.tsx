@@ -43,7 +43,7 @@ function App() {
             {/*/>*/}
 
             {/*<ControlOnOff on={on} setOn={setOn}/> {on.toString()}*/}
-            <UncontrolledAccordion titleValue={'Menu'} countStrings={10}/>
+            {/*<UncontrolledAccordion titleValue={'Menu'} countStrings={10}/>*/}
             {/*<UncontrolledRating/>*/}
 
             {/*<PageTitle title={'This is APP component'}/>*/}
@@ -56,7 +56,7 @@ function App() {
             {/*<Rating value={3}/>*/}
             {/*<Rating value={4}/>*/}
             {/*<Rating value={5}/>*/}
-            {/*<OnOff/>*/}
+            <ControlOnOff on={on} setOn={setOn}/>
         </div>
     );
 }

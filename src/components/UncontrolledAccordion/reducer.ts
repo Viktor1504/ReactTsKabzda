@@ -2,9 +2,10 @@ type ActionType = {
     type: string
 }
 
-type StateType = {
+export type StateType = {
     collapsed: boolean
 }
+
 
 export const reducer = (state: StateType, action: ActionType): StateType => {
     switch (action.type) {
