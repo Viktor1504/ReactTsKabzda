@@ -8,11 +8,17 @@ export const DifficultCountingExample = () => {
     const [a, setA] = useState<number>(3)
     const [b, setB] = useState<number>(3)
 
+    let resultB = 1
+
+    for (let i = 1; i <= b; i++) {
+        resultB *= i
+    }
+
     const resultA = useMemo(() => {
         let tempResult = 1;
         for (let i = 1; i <= a; i++) {
             let fake = 0
-            while (fake < 10000000) {
+            while (fake < 100000000) {
                 fake++
                 const fakeValue = Math.random()
             }
@@ -21,11 +27,6 @@ export const DifficultCountingExample = () => {
         return tempResult
     }, [a]);
 
-    let resultB = 1
-
-    for (let i = 1; i <= b; i++) {
-        resultB *= i
-    }
 
     return <>
         <input value={a} onChange={(e) => setA(+e.currentTarget.value)}/>
@@ -38,7 +39,6 @@ export const DifficultCountingExample = () => {
         <div>
             Result for b: {resultB}
         </div>
-
     </>
 }
 
@@ -72,3 +72,33 @@ export const HelpsToReactMemo = () => {
         <Users users={newArr}/>
     </>
 }
+
+export const LikeUseCallBack = () => {
+    console.log('LikeUseCallBack')
+    const [counter, setCounter] = useState(0)
+    const [books, setBooks] = useState(['React', 'JS', 'CSS', 'HTML'])
+
+    const addBook = () => setBooks([...books, 'Angular'])
+    const addCounter = () => setCounter(counter + 1)
+
+    const memoizedAddBook = useMemo(() => {
+        return addBook
+    }, [books])
+
+    return <>
+        <button onClick={addCounter}>+</button>
+        {counter}
+        <Books addBook={memoizedAddBook}/>
+    </>
+}
+
+type BooksType = {
+    addBook: () => void
+}
+
+const Books = memo(function Users(props: BooksType) {
+    console.log('Books!')
+    return <div>
+        <button onClick={props.addBook}>ADD BOOK</button>
+    </div>
+})
