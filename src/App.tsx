@@ -1,14 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
-import {ControlAccordion} from './components/Accordion/ControlAccordion';
-import {Rating, RatingValueType} from './components/Rating/Rating';
-import OnOff from './components/OnOff/OnOff';
-import {UncontrolledAccordion} from './components/UncontrolledAccordion/UncontrolledAccordion';
-import {UncontrolledRating} from './components/UncontrolledRating/UncontrolledRating';
+import {RatingValueType} from './components/Rating/Rating';
 import ControlOnOff from './components/OnOff/ControlOnOff';
-import {action} from '@storybook/addon-actions';
-import {Select} from './components/Select/Select';
-import {SelectDim} from './components/SelectDim/SelectDim';
 
 function App() {
 

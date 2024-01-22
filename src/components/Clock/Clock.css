@@ -1,0 +1,12 @@
+.clock-container {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* На весь экран по вертикали */
+}
+
+.analog-clock-container {
+    display: flex;
+    flex-direction: row;
+}
