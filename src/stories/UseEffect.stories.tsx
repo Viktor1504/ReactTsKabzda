@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {log} from 'node:util';
 
 export default {
     title: 'useEffect demo'
@@ -68,4 +69,51 @@ export const SetTimeoutExample = () => {
             <h1>{hours}:{minutes}:{seconds}</h1>
         </div>
     )
+}
+
+export const ResetEffectExample = () => {
+    const [counter, setCounter] = useState(1)
+
+    console.log('component rendered', counter)
+
+    useEffect(() => {
+        console.log('Effect occurred', counter)
+
+
+        return () => {
+            console.log('Reset Effect', counter)
+        }
+    }, [])
+
+    const increase = () => setCounter(counter + 1)
+
+    return <>
+        Hello, counter: {counter}
+        <button onClick={increase}>+</button>
+    </>
+}
+
+export const KeysTrackerEffectExample = () => {
+    const [text, setText] = useState('')
+
+    console.log('component rendered', text)
+
+    useEffect(() => {
+
+        const handler = (e: KeyboardEvent) => {
+            console.log(e.key)
+            setText(prevText => prevText + e.key)
+        }
+
+        window.document.addEventListener('keypress', handler)
+
+        return () => {
+            window.document.removeEventListener('keypress', handler)
+        }
+    }, [])
+
+
+    return <>
+        Typed text: {text}
+    </>
 }
